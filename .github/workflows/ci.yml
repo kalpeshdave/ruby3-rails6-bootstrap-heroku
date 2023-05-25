@@ -30,7 +30,6 @@ jobs:
       mysql:
         image: mysql:5.7.36
         ports: ['3306:3306']
-        command: mysqld --innodb-file-format=Barracuda --innodb_file_per_table=true --innodb-large-prefix=true
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
       redis:
