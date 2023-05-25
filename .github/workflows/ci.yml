@@ -25,12 +25,29 @@ jobs:
       RAILS_ENV: test
 
     services:
-      db:
+      mysql:
         image: mysql:5.7.36
         ports: ['3306:3306']
         run: mysqld --innodb-file-format=Barracuda --innodb_file_per_table=true --innodb-large-prefix=true
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      redis:
+        image: redis:5.0
+        ports: ['6379:6379']
+      elasticsearch:
+        image: elasticsearch:7.12.0
+        env:
+          - cluster.name=es-cluster
+          - discovery.type=single-node
+          - xpack.security.enabled=false
+          - transport.host=localhost
+          - network.host=127.0.0.1
+          - http.host=0.0.0.0
+          - http.cors.enabled=true
+          - http.cors.allow-origin=*
+          - ES_JAVA_OPTS=-Xms512m -Xmx512m
+        ports:
+          - '9200:9200'
 
     steps:
     - uses: actions/checkout@v3
