@@ -26,20 +26,17 @@ jobs:
 
     services:
       db:
-        image: postgres:12
-        ports: ['5432:5432']
+        image: mysql:5.7.36
+        ports: ['3306:3306']
+        run: mysqld --innodb-file-format=Barracuda --innodb_file_per_table=true --innodb-large-prefix=true
         env:
-          POSTGRES_PASSWORD: postgres
-
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
     steps:
     - uses: actions/checkout@v3
     - uses: nanasess/setup-chromedriver@v1
+    - name: Install System Dependencies
+      run: sudo apt-get update --allow-releaseinfo-change && sudo apt-get install g++ qtbase5-dev qt5-qmake libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x nano libcurl4 libcurl4-openssl-dev libmagickcore-dev libmagickwand-dev imagemagick xvfb nodejs
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
