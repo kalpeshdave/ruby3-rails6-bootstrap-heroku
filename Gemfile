@@ -49,24 +49,24 @@ end
 
 group :test do
   gem 'capybara', '~> 3.39'
-  gem 'email_spec', '~> 2.2'
-  gem 'selenium-webdriver', '~> 4.9'
-  gem 'simplecov', '~> 0.22.0', require: false
-  gem 'simplecov-lcov', '~> 0.8.0', require: false
-  gem 'webmock', '~> 3.18', require: false
-  gem 'shoulda-matchers'
-  gem 'shoulda-callback-matchers'
+  gem 'capybara-screenshot'
+  gem 'capybara-webkit'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'headless'
-  gem 'capybara-webkit'
-  gem 'capybara-screenshot'
-  gem 'ffaker'
-  gem 'rspec-sidekiq'
+  gem 'email_spec', '~> 2.2'
   gem 'fakeredis', require: 'fakeredis/rspec'
+  gem 'ffaker'
+  gem 'headless'
   gem 'rspec_junit_formatter'
+  gem 'rspec-sidekiq'
+  gem 'selenium-webdriver', '~> 4.9'
+  gem 'shoulda-callback-matchers'
+  gem 'shoulda-matchers'
+  gem 'simplecov', '~> 0.22.0', require: false
+  gem 'simplecov-lcov', '~> 0.8.0', require: false
   gem 'timecop'
   gem 'tzinfo-data'
+  gem 'webmock', '~> 3.18', require: false
 end
 
 group :production do
@@ -76,4 +76,3 @@ end
 group :ci do
   gem 'bundle-audit'
 end
-
