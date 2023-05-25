@@ -16,6 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Install System Dependencies
+      run: sudo apt-get update --allow-releaseinfo-change && sudo apt-get install g++ qtbase5-dev qt5-qmake libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x nano libcurl4 libcurl4-openssl-dev libmagickcore-dev libmagickwand-dev imagemagick xvfb nodejs
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
