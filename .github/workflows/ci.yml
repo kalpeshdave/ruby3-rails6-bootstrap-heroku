@@ -68,9 +68,6 @@ jobs:
       with:
         ruby-version: '3.0.6'
         bundler-cache: true
-    - name: Setup MySql
-      run: |
-        sudo mysqld --innodb-file-format=Barracuda --innodb_file_per_table=true --innodb-large-prefix=true
     - name: Set up Node
       uses: actions/setup-node@v3
       with:
