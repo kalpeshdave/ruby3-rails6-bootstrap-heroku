@@ -15,7 +15,7 @@ development:
   database: ruby3_rails6_bootstrap_heroku_development
   pool: 25
   username: root
-  password:
+  password: root
   host: localhost
   port: 3306
   encoding: utf8mb4
@@ -31,7 +31,7 @@ test: &test
   database: ruby3_rails6_bootstrap_heroku_test
   pool: 25
   username: root
-  password:
+  password: root
   host: localhost
   port: 3306
 
