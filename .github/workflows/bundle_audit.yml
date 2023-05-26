@@ -1,0 +1,21 @@
+# name: "Bundle Audit"
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
+# jobs:
+#   bundle-audit:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#       - name: Install System Dependencies
+#         run: sudo apt-get update --allow-releaseinfo-change && sudo apt-get install g++ qtbase5-dev qt5-qmake libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x nano libcurl4 libcurl4-openssl-dev libmagickcore-dev libmagickwand-dev imagemagick xvfb nodejs
+#       - name: Install Ruby and gems
+#         uses: ruby/setup-ruby@v1
+#         with:
+#           ruby-version: '3.0.6'
+#           bundler-cache: true
+#       - name: Security audit dependencies
+#         run: bundle exec bundle-audit check --update
