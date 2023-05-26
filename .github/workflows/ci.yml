@@ -43,9 +43,9 @@ jobs:
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-      # redis:
-      #   image: redis:5.0
-      #   ports: ['6379:6379']
+      redis:
+        image: redis:5.0
+        ports: ['6379:6379']
       # elasticsearch:
       #   image: docker.elastic.co/elasticsearch/elasticsearch:7.12.0
       #   env:
@@ -66,8 +66,6 @@ jobs:
       #   ports:
       #   - 9200:9200
     steps:
-    - uses: actions/checkout@v3
-    - uses: nanasess/setup-chromedriver@v1
     - name: Install System Dependencies
       run: sudo apt-get update --allow-releaseinfo-change && sudo apt-get install g++ qtbase5-dev qt5-qmake libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x nano libcurl4 libcurl4-openssl-dev libmagickcore-dev libmagickwand-dev imagemagick xvfb nodejs
     - name: Verify MySQL connection from container 
@@ -76,6 +74,8 @@ jobs:
         sudo apt-get install -y mysql-client
         mysql -uroot -h127.0.0.1 -e "CREATE DATABASE ruby3_rails6_bootstrap_heroku_development"
         mysql -uroot -h127.0.0.1 -e "CREATE DATABASE ruby3_rails6_bootstrap_heroku_test"
+    - uses: actions/checkout@v3
+    - uses: nanasess/setup-chromedriver@v1
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
