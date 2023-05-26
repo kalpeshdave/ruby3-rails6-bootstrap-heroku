@@ -70,7 +70,7 @@ jobs:
         bundler-cache: true
     - name: Setup MySql
       run: |
-        mysqld --innodb-file-format=Barracuda --innodb_file_per_table=true --innodb-large-prefix=true
+        sudo mysqld --innodb-file-format=Barracuda --innodb_file_per_table=true --innodb-large-prefix=true
     - name: Set up Node
       uses: actions/setup-node@v3
       with:
