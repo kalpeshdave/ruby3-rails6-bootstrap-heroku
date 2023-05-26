@@ -65,6 +65,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y mysql-client
+        echo "sudo mysqladmin variables | grep socket"
         mysql -uroot -h127.0.0.1 -e "CREATE DATABASE ruby3_rails6_bootstrap_heroku_development"
         mysql -uroot -h127.0.0.1 -e "CREATE DATABASE ruby3_rails6_bootstrap_heroku_test"
     - name: Set up Ruby
@@ -74,6 +75,7 @@ jobs:
         bundler-cache: true
     - name: Set up Database
       run: |
+        sudo /etc/init.d/mysql start
         bundle exec rails db:setup
         bundle exec rails db:prepare
     - name: Set up Node
