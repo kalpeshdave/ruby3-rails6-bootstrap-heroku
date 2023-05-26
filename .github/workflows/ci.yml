@@ -31,6 +31,11 @@ jobs:
         image: mysql:5.7.36
         ports:
           - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: MYSQL_ALLOW_EMPTY_PASSWORD=1
+          MYSQL_DATABASE:  ruby3_rails6_bootstrap_heroku_test
+          MYSQL_USER: root
+          MYSQL_PASSWORD: null
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
       # redis:
       #   image: redis:5.0
@@ -63,7 +68,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y mysql-client
-        mysql -uroot -h127.0.0.1 -proot -e "SHOW DATABASES"
+        mysql -uroot -h127.0.0.1 -p -e "SHOW DATABASES"
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
