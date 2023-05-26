@@ -65,7 +65,8 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y mysql-client
-        mysql -uroot -h127.0.0.1 -e "SHOW DATABASES"
+        mysql -uroot -h127.0.0.1 -e "CREATE DATABASE ruby3_rails6_bootstrap_heroku_development"
+        mysql -uroot -h127.0.0.1 -e "CREATE DATABASE ruby3_rails6_bootstrap_heroku_test"
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
